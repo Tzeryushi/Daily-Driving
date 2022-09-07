@@ -9,5 +9,5 @@ Accomplishing the tasks for the day will mark a completed day in the calendar
 Resets next day
 
 Can edit items with special tags, such as increased priority or permanent slot
-Items will gain more weight in the random pool the longer they have gone undone
+Items will gain more weight in the random pool the longer they have gone undone.
 Rewards for consistency? Pretty colors?
