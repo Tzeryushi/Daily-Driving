@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ElementScor.tres" type="Theme" id=1]
+
+[node name="DailyElement" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1077.0
+margin_bottom = -666.0
+rect_pivot_offset = Vector2( -270, -147 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 289.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource( 1 )
+text = "Example"
+align = 1
+valign = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 53.0
+margin_right = 289.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_right = 93.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+margin_left = 97.0
+margin_right = 191.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+
+[node name="Button4" type="Button" parent="HBoxContainer"]
+margin_left = 195.0
+margin_right = 289.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
