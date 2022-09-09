@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://rimouski sb.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Element.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -21,8 +22,9 @@ margin_right = -1096.0
 margin_bottom = -671.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 margin_right = 270.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
