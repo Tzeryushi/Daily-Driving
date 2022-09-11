@@ -16,6 +16,5 @@ func destroy() -> void:
 func _on_Delete_pressed():
 	destroy() # Replace with function body.
 	
-
 func _on_PriorityInput_text_entered(new_text):
 	priority = float(new_text)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://Element.tscn" type="PackedScene" id=2]
 [ext_resource path="res://NewElementButton.gd" type="Script" id=3]
 [ext_resource path="res://ElementContainer.gd" type="Script" id=4]
+[ext_resource path="res://DailyTaskContainer.gd" type="Script" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -47,97 +48,33 @@ margin_bottom = 641.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="DailyTasks" type="ScrollContainer" parent="HBoxContainer"]
+[node name="DailyTaskContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 342.0
 margin_right = 681.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DailyTasks"]
-margin_right = 327.0
-margin_bottom = 986.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Button2" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_right = 327.0
+[node name="NewDay" type="Button" parent="HBoxContainer/DailyTaskContainer"]
+margin_right = 339.0
 margin_bottom = 95.0
 mouse_filter = 1
 theme = ExtResource( 1 )
-text = "Work on Game"
+text = "New Task"
 
-[node name="Button3" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
+[node name="DailyTasks" type="ScrollContainer" parent="HBoxContainer/DailyTaskContainer"]
 margin_top = 99.0
-margin_right = 327.0
-margin_bottom = 194.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
+margin_right = 339.0
+margin_bottom = 768.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Button4" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 198.0
-margin_right = 327.0
-margin_bottom = 293.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button5" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 297.0
-margin_right = 327.0
-margin_bottom = 392.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button6" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 396.0
-margin_right = 327.0
-margin_bottom = 491.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button7" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 495.0
-margin_right = 327.0
-margin_bottom = 590.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button8" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 594.0
-margin_right = 327.0
-margin_bottom = 689.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button9" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 693.0
-margin_right = 327.0
-margin_bottom = 788.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button10" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 792.0
-margin_right = 327.0
-margin_bottom = 887.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button11" type="Button" parent="HBoxContainer/DailyTasks/VBoxContainer"]
-margin_top = 891.0
-margin_right = 327.0
-margin_bottom = 986.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DailyTaskContainer/DailyTasks"]
+margin_right = 339.0
+margin_bottom = 669.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 685.0
@@ -147,94 +84,30 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTasks"]
-margin_right = 326.0
-margin_bottom = 1085.0
+margin_right = 338.0
+margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_right = 326.0
+[node name="Button9" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
+margin_right = 338.0
 margin_bottom = 95.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "Work on Game"
 
-[node name="Button2" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
+[node name="Button10" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
 margin_top = 99.0
-margin_right = 326.0
+margin_right = 338.0
 margin_bottom = 194.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "Work on Game"
 
-[node name="Button3" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 198.0
-margin_right = 326.0
-margin_bottom = 293.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button4" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 297.0
-margin_right = 326.0
-margin_bottom = 392.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button5" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 396.0
-margin_right = 326.0
-margin_bottom = 491.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button6" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 495.0
-margin_right = 326.0
-margin_bottom = 590.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button7" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 594.0
-margin_right = 326.0
-margin_bottom = 689.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button8" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 693.0
-margin_right = 326.0
-margin_bottom = 788.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button9" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 792.0
-margin_right = 326.0
-margin_bottom = 887.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button10" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 891.0
-margin_right = 326.0
-margin_bottom = 986.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
 [node name="Button11" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 990.0
-margin_right = 326.0
-margin_bottom = 1085.0
+margin_top = 198.0
+margin_right = 338.0
+margin_bottom = 293.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 text = "Work on Game"
@@ -292,3 +165,4 @@ theme = ExtResource( 1 )
 text = "Work on Game"
 
 [connection signal="pressed" from="HBoxContainer/ElementContainer/NewElement" to="HBoxContainer/ElementContainer" method="_on_NewElement_pressed"]
+[connection signal="pressed" from="HBoxContainer/DailyTaskContainer/NewDay" to="HBoxContainer/DailyTaskContainer" method="_on_NewDay_pressed"]
