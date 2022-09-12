@@ -4,6 +4,7 @@ onready var element_title = $Title
 
 var priority : float = 1.0
 var force : bool = false
+var used : bool = false
 
 signal destroy
 
