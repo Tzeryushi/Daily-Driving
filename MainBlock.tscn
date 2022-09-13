@@ -55,6 +55,7 @@ margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
+element_container = NodePath("../ElementContainer/Pool/VBoxContainer")
 
 [node name="NewDay" type="Button" parent="HBoxContainer/DailyTaskContainer"]
 margin_right = 339.0

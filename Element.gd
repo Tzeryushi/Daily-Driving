@@ -19,3 +19,7 @@ func _on_Delete_pressed():
 	
 func _on_PriorityInput_text_entered(new_text):
 	priority = float(new_text)
+
+
+func _on_PriorityInput_text_changed(new_text):
+	priority = float(new_text)

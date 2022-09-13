@@ -7,7 +7,7 @@ func _ready() -> void:
 #get list of nodes within the pool, select amount based on priority
 func _on_NewDay_pressed():
 	var chosen = element_container.get_child(select_index())
-	
+	print(chosen.priority)
 
 func select_index() -> int:
 	var weight_array = []
