@@ -15,4 +15,6 @@ func _on_NewElement_pressed():
 	_create_new_element(input_field.get_text())
 
 func _on_element_delete(element) -> void:
+	if element.daily_node != null:
+		element.daily_node.queue_free()
 	element.queue_free()

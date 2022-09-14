@@ -6,6 +6,7 @@ export(NodePath) var element_container
 
 export var daily_element : PackedScene
 
+
 func _ready() -> void:
 	element_container = get_node(element_container)
 #get list of nodes within the pool, select amount based on priority
@@ -45,4 +46,7 @@ func select_index() -> int:
 	return choose_index
 
 func _on_daily_delete(element) -> void:
+	var node_x = element.origin_node
+	node_x.daily_node = null
+	node_x.used = false
 	element.queue_free()

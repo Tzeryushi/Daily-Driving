@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 onready var element_title = $Title
+onready var priority_text = $HBoxContainer/Priority
 
 var daily_node = null
 
@@ -9,6 +10,10 @@ var force : bool = false
 var used : bool = false
 
 signal destroy
+
+func _ready() -> void:
+	priority_text.text = String(priority)
+	return 
 
 func get_title() -> String:
 	return element_title.text
@@ -24,9 +29,7 @@ func link_daily_node(node) -> void:
 
 func _on_Delete_pressed():
 	destroy() # Replace with function body.
-	
-func _on_PriorityInput_text_entered(new_text):
-	priority = float(new_text)
 
-func _on_PriorityInput_text_changed(new_text):
-	priority = float(new_text)
+func _on_PriorityInput_value_changed(value):
+	priority = float(value)
+	priority_text.text = String(value)
