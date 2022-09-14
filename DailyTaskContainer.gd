@@ -1,13 +1,26 @@
 extends VBoxContainer
 
+onready var pool = $DailyTasks/VBoxContainer
+
 export(NodePath) var element_container
+
+export var daily_element : PackedScene
 
 func _ready() -> void:
 	element_container = get_node(element_container)
 #get list of nodes within the pool, select amount based on priority
+
+func _create_new_element(title:String, origin:Node) -> Node:
+	var temp_element = daily_element.instance()
+	pool.add_child(temp_element)
+	temp_element.initialize(title, origin)
+	temp_element.connect("destroy", self, "_on_daily_delete", [temp_element])
+	return temp_element
+
 func _on_NewDay_pressed():
 	var chosen = element_container.get_child(select_index())
-	print(chosen.priority)
+	chosen.link_daily_node(_create_new_element(chosen.get_title(), chosen))
+	chosen.used = true
 
 func select_index() -> int:
 	var weight_array = []
@@ -30,3 +43,6 @@ func select_index() -> int:
 			choose_index = i
 			break
 	return choose_index
+
+func _on_daily_delete(element) -> void:
+	element.queue_free()

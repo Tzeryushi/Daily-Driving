@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://Element.tscn" type="PackedScene" id=2]
 [ext_resource path="res://NewElementButton.gd" type="Script" id=3]
 [ext_resource path="res://ElementContainer.gd" type="Script" id=4]
 [ext_resource path="res://DailyTaskContainer.gd" type="Script" id=5]
+[ext_resource path="res://DailyElement.tscn" type="PackedScene" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -56,6 +57,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
 element_container = NodePath("../ElementContainer/Pool/VBoxContainer")
+daily_element = ExtResource( 6 )
 
 [node name="NewDay" type="Button" parent="HBoxContainer/DailyTaskContainer"]
 margin_right = 339.0

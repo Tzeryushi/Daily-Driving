@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://DailyElement.gd" type="Script" id=2]
+[ext_resource path="res://ElementDetails.tres" type="Theme" id=3]
 
 [node name="DailyElement" type="VBoxContainer"]
 anchor_right = 1.0
@@ -11,7 +12,7 @@ margin_bottom = -666.0
 rect_pivot_offset = Vector2( -270, -147 )
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 margin_right = 289.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
@@ -24,25 +25,32 @@ valign = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 73.0
 margin_right = 289.0
-margin_bottom = 102.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Push" type="Button" parent="HBoxContainer"]
+[node name="Kill" type="Button" parent="HBoxContainer"]
 margin_right = 93.0
-margin_bottom = 29.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "Kill"
 
 [node name="Fail" type="Button" parent="HBoxContainer"]
 margin_left = 97.0
 margin_right = 191.0
-margin_bottom = 29.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "Fail"
 
 [node name="Pop" type="Button" parent="HBoxContainer"]
 margin_left = 195.0
 margin_right = 289.0
-margin_bottom = 29.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
+theme = ExtResource( 3 )
+text = "Pop"
 
+[connection signal="pressed" from="HBoxContainer/Kill" to="." method="_on_Kill_pressed"]
 [connection signal="pressed" from="HBoxContainer/Pop" to="." method="_on_Pop_pressed"]
