@@ -13,6 +13,11 @@ func _create_new_element(title:String) -> void:
 	
 func _on_NewElement_pressed():
 	_create_new_element(input_field.get_text())
+	input_field.text = ""
+
+func _on_NewInput_text_entered(new_text):
+	_create_new_element(input_field.get_text())
+	input_field.text = ""
 
 func _on_element_delete(element) -> void:
 	if element.daily_node != null:

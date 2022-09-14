@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://Element.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ElementContainer.gd" type="Script" id=4]
 [ext_resource path="res://DailyTaskContainer.gd" type="Script" id=5]
 [ext_resource path="res://DailyElement.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ElementDetails.tres" type="Theme" id=7]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -34,10 +35,12 @@ script = ExtResource( 3 )
 [node name="NewInput" type="LineEdit" parent="HBoxContainer/ElementContainer"]
 margin_top = 99.0
 margin_right = 338.0
-margin_bottom = 123.0
+margin_bottom = 134.0
+theme = ExtResource( 7 )
+align = 1
 
 [node name="Pool" type="ScrollContainer" parent="HBoxContainer/ElementContainer"]
-margin_top = 127.0
+margin_top = 138.0
 margin_right = 338.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
@@ -45,7 +48,7 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ElementContainer/Pool"]
 margin_right = 338.0
-margin_bottom = 641.0
+margin_bottom = 630.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -64,10 +67,35 @@ margin_right = 339.0
 margin_bottom = 95.0
 mouse_filter = 1
 theme = ExtResource( 1 )
-text = "New Task"
+text = "New Day"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DailyTaskContainer"]
+margin_top = 99.0
+margin_right = 339.0
+margin_bottom = 124.0
+
+[node name="NumberLabel" type="Label" parent="HBoxContainer/DailyTaskContainer/HBoxContainer"]
+margin_right = 30.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 7 )
+align = 1
+valign = 1
+
+[node name="TaskNumber" type="HSlider" parent="HBoxContainer/DailyTaskContainer/HBoxContainer"]
+margin_left = 34.0
+margin_right = 339.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+min_value = 1.0
+max_value = 10.0
+value = 5.0
 
 [node name="DailyTasks" type="ScrollContainer" parent="HBoxContainer/DailyTaskContainer"]
-margin_top = 99.0
+margin_top = 128.0
 margin_right = 339.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
@@ -75,7 +103,7 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DailyTaskContainer/DailyTasks"]
 margin_right = 339.0
-margin_bottom = 669.0
+margin_bottom = 640.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -168,4 +196,6 @@ theme = ExtResource( 1 )
 text = "Work on Game"
 
 [connection signal="pressed" from="HBoxContainer/ElementContainer/NewElement" to="HBoxContainer/ElementContainer" method="_on_NewElement_pressed"]
+[connection signal="text_entered" from="HBoxContainer/ElementContainer/NewInput" to="HBoxContainer/ElementContainer" method="_on_NewInput_text_entered"]
 [connection signal="pressed" from="HBoxContainer/DailyTaskContainer/NewDay" to="HBoxContainer/DailyTaskContainer" method="_on_NewDay_pressed"]
+[connection signal="value_changed" from="HBoxContainer/DailyTaskContainer/HBoxContainer/TaskNumber" to="HBoxContainer/DailyTaskContainer" method="_on_TaskNumber_value_changed"]

@@ -9,9 +9,8 @@ margin_right = -1058.0
 margin_bottom = -659.0
 
 [node name="Label" type="Label" parent="."]
-margin_top = 1.0
 margin_right = 308.0
-margin_bottom = 50.0
+margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource( 1 )
@@ -20,31 +19,31 @@ align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 56.0
+margin_top = 73.0
 margin_right = 308.0
 margin_bottom = 109.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Unpop" type="Button" parent="HBoxContainer"]
 margin_right = 74.0
-margin_bottom = 53.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 
 [node name="Button2" type="Button" parent="HBoxContainer"]
 margin_left = 78.0
 margin_right = 152.0
-margin_bottom = 53.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 
 [node name="Button3" type="Button" parent="HBoxContainer"]
 margin_left = 156.0
 margin_right = 230.0
-margin_bottom = 53.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
 
 [node name="Button4" type="Button" parent="HBoxContainer"]
 margin_left = 234.0
 margin_right = 308.0
-margin_bottom = 53.0
+margin_bottom = 36.0
 size_flags_horizontal = 3
