@@ -28,16 +28,16 @@ func _create_new_element(title:String, origin:Node) -> Node:
 func _on_NewDay_pressed():
 	for i in range(0, number_of_tasks):
 		var chosen = element_container.get_child(select_index())
-		if !chosen.used:
+		if !chosen.get_used():
 			chosen.link_daily_node(_create_new_element(chosen.get_title(), chosen))
-			chosen.used = true
+			chosen.set_used(true)
 
 func select_index() -> int:
 	var weight_array = []
 	var full_weight = 0.0
 	#add exclusions to avoid duplicates
 	for i in element_container.get_children():
-		if i.used == true:
+		if i.get_used() == true:
 			weight_array.append(0.0)
 		else:
 			weight_array.append(i.priority)
@@ -57,7 +57,7 @@ func select_index() -> int:
 func _on_daily_delete(element) -> void:
 	var node_x = element.origin_node
 	node_x.daily_node = null
-	node_x.used = false
+	node_x.set_used(false)
 	element.queue_free()
 
 func _on_TaskNumber_value_changed(value):

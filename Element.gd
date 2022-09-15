@@ -1,7 +1,12 @@
-extends VBoxContainer
+extends Control
 
-onready var element_title = $Title
-onready var priority_text = $HBoxContainer/Priority
+onready var element_title = $ElementBox/Title
+onready var priority_text = $ElementBox/HBoxContainer/Priority
+onready var bg = $Background
+
+export var default_color : Color = Color(1,1,1,1)
+export var force_color : Color = Color(1,1,1,1)
+export var used_color : Color = Color(1,1,1,1)
 
 var daily_node = null
 
@@ -10,6 +15,7 @@ var force : bool = false
 var used : bool = false
 
 signal destroy
+signal forced
 
 func _ready() -> void:
 	priority_text.text = String(priority)
@@ -20,6 +26,27 @@ func get_title() -> String:
 
 func set_title(title:String) -> void:
 	element_title.text = title
+
+func get_force() -> bool:
+	return force
+
+func set_force(f:bool) -> void:
+	if f:
+		bg.color = force_color
+	else:
+		bg.color = default_color
+	force = f
+
+func get_used() -> bool:
+	return used
+
+func set_used(use:bool) -> void:
+	if !force:
+		if use:
+			bg.color = used_color
+		else:
+			bg.color = default_color
+	used = use
 
 func destroy() -> void:
 	emit_signal("destroy")
@@ -33,3 +60,6 @@ func _on_Delete_pressed():
 func _on_PriorityInput_value_changed(value):
 	priority = float(value)
 	priority_text.text = String(value)
+
+func _on_Force_pressed():
+	set_force(!force)
