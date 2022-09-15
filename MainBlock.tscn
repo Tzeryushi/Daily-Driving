@@ -107,41 +107,31 @@ margin_bottom = 640.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer"]
+[node name="PoppedTaskContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 685.0
 margin_right = 1023.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTasks"]
+[node name="Button" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
+margin_right = 338.0
+margin_bottom = 95.0
+theme = ExtResource( 1 )
+text = "Finish Day"
+
+[node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer/PoppedTaskContainer"]
+margin_top = 99.0
 margin_right = 338.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button9" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTaskContainer/PoppedTasks"]
 margin_right = 338.0
-margin_bottom = 95.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button10" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 99.0
-margin_right = 338.0
-margin_bottom = 194.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
-
-[node name="Button11" type="Button" parent="HBoxContainer/PoppedTasks/VBoxContainer"]
-margin_top = 198.0
-margin_right = 338.0
-margin_bottom = 293.0
-mouse_filter = 1
-theme = ExtResource( 1 )
-text = "Work on Game"
+margin_bottom = 669.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Calendar" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 1027.0

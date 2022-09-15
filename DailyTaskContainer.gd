@@ -26,6 +26,8 @@ func _create_new_element(title:String, origin:Node) -> Node:
 	return temp_element
 
 func _on_NewDay_pressed():
+	for i in pool.get_children():
+		_on_daily_delete(i)
 	for i in element_container.get_children():
 		if i.get_force():
 			if !i.get_used():

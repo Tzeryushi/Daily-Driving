@@ -2,14 +2,22 @@
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 
-[node name="PoppedElement" type="VBoxContainer"]
+[node name="Control" type="Control"]
+margin_right = 308.0
+margin_bottom = 107.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1058.0
-margin_bottom = -659.0
 
-[node name="Label" type="Label" parent="."]
-margin_right = 308.0
+[node name="PoppedElement" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 301.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="PoppedElement"]
+margin_right = 294.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -18,32 +26,32 @@ text = "Example"
 align = 1
 valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="PoppedElement"]
 margin_top = 73.0
-margin_right = 308.0
-margin_bottom = 109.0
+margin_right = 294.0
+margin_bottom = 93.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Unpop" type="Button" parent="HBoxContainer"]
-margin_right = 74.0
-margin_bottom = 36.0
+[node name="Unpop" type="Button" parent="PoppedElement/HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
-margin_left = 78.0
-margin_right = 152.0
-margin_bottom = 36.0
+[node name="Button2" type="Button" parent="PoppedElement/HBoxContainer"]
+margin_left = 74.0
+margin_right = 145.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
-margin_left = 156.0
-margin_right = 230.0
-margin_bottom = 36.0
+[node name="Button3" type="Button" parent="PoppedElement/HBoxContainer"]
+margin_left = 149.0
+margin_right = 219.0
+margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="Button4" type="Button" parent="HBoxContainer"]
-margin_left = 234.0
-margin_right = 308.0
-margin_bottom = 36.0
+[node name="Button4" type="Button" parent="PoppedElement/HBoxContainer"]
+margin_left = 223.0
+margin_right = 294.0
+margin_bottom = 20.0
 size_flags_horizontal = 3

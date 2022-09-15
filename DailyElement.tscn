@@ -4,16 +4,27 @@
 [ext_resource path="res://DailyElement.gd" type="Script" id=2]
 [ext_resource path="res://ElementDetails.tres" type="Theme" id=3]
 
-[node name="DailyElement" type="VBoxContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -1077.0
-margin_bottom = -666.0
-rect_pivot_offset = Vector2( -270, -147 )
+[node name="DailyElement" type="PanelContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 289.0
+margin_bottom = 118.0
 script = ExtResource( 2 )
 
-[node name="Title" type="Label" parent="."]
-margin_right = 289.0
+[node name="Background" type="ColorRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 282.0
+margin_bottom = 111.0
+
+[node name="DailyElementBox" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 282.0
+margin_bottom = 111.0
+rect_pivot_offset = Vector2( -270, -147 )
+
+[node name="Title" type="Label" parent="DailyElementBox"]
+margin_right = 275.0
 margin_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -22,35 +33,35 @@ text = "Example"
 align = 1
 valign = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="DailyElementBox"]
 margin_top = 73.0
-margin_right = 289.0
+margin_right = 275.0
 margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Kill" type="Button" parent="HBoxContainer"]
-margin_right = 93.0
+[node name="Kill" type="Button" parent="DailyElementBox/HBoxContainer"]
+margin_right = 89.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 theme = ExtResource( 3 )
 text = "Kill"
 
-[node name="Fail" type="Button" parent="HBoxContainer"]
-margin_left = 97.0
-margin_right = 191.0
+[node name="Fail" type="Button" parent="DailyElementBox/HBoxContainer"]
+margin_left = 93.0
+margin_right = 182.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 theme = ExtResource( 3 )
 text = "Fail"
 
-[node name="Pop" type="Button" parent="HBoxContainer"]
-margin_left = 195.0
-margin_right = 289.0
+[node name="Pop" type="Button" parent="DailyElementBox/HBoxContainer"]
+margin_left = 186.0
+margin_right = 275.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 theme = ExtResource( 3 )
 text = "Pop"
 
-[connection signal="pressed" from="HBoxContainer/Kill" to="." method="_on_Kill_pressed"]
-[connection signal="pressed" from="HBoxContainer/Pop" to="." method="_on_Pop_pressed"]
+[connection signal="pressed" from="DailyElementBox/HBoxContainer/Kill" to="." method="_on_Kill_pressed"]
+[connection signal="pressed" from="DailyElementBox/HBoxContainer/Pop" to="." method="_on_Pop_pressed"]

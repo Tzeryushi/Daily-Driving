@@ -1,6 +1,6 @@
-extends VBoxContainer
+extends Control
 
-onready var element_title = $Title
+onready var element_title = $DailyElementBox/Title
 
 var origin_node = null
 

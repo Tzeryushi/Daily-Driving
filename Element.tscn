@@ -5,6 +5,7 @@
 [ext_resource path="res://Element.gd" type="Script" id=3]
 
 [node name="Element" type="PanelContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 270.0
 margin_bottom = 118.0
 script = ExtResource( 3 )
