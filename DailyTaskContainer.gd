@@ -37,7 +37,7 @@ func select_index() -> int:
 	var full_weight = 0.0
 	#add exclusions to avoid duplicates
 	for i in element_container.get_children():
-		if i.get_used() == true:
+		if i.get_used() or i.get_force():
 			weight_array.append(0.0)
 		else:
 			weight_array.append(i.priority)
@@ -63,3 +63,12 @@ func _on_daily_delete(element) -> void:
 func _on_TaskNumber_value_changed(value):
 	number_of_tasks = value
 	task_number_label.text = String(value)
+
+func _on_ElementContainer_forced(node):
+	if node.get_force():
+		if node.get_used():
+			node.set_used(false)
+		else:
+			node.link_daily_node(_create_new_element(node.get_title(), node))
+	else:
+		_on_daily_delete(node.daily_node)

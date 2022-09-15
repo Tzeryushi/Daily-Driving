@@ -195,6 +195,7 @@ mouse_filter = 1
 theme = ExtResource( 1 )
 text = "Work on Game"
 
+[connection signal="forced" from="HBoxContainer/ElementContainer" to="HBoxContainer/DailyTaskContainer" method="_on_ElementContainer_forced"]
 [connection signal="pressed" from="HBoxContainer/ElementContainer/NewElement" to="HBoxContainer/ElementContainer" method="_on_NewElement_pressed"]
 [connection signal="text_entered" from="HBoxContainer/ElementContainer/NewInput" to="HBoxContainer/ElementContainer" method="_on_NewInput_text_entered"]
 [connection signal="pressed" from="HBoxContainer/DailyTaskContainer/NewDay" to="HBoxContainer/DailyTaskContainer" method="_on_NewDay_pressed"]

@@ -36,6 +36,7 @@ func set_force(f:bool) -> void:
 	else:
 		bg.color = default_color
 	force = f
+	emit_signal("forced")
 
 func get_used() -> bool:
 	return used
