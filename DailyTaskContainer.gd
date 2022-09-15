@@ -5,13 +5,18 @@ onready var task_number_label := $HBoxContainer/NumberLabel
 onready var task_number_slider := $HBoxContainer/TaskNumber
 
 export(NodePath) var element_container
+export(NodePath) var popped_container
 
 export var daily_element : PackedScene
 
 var number_of_tasks
 
+signal day_set(number)
+signal switch
+
 func _ready() -> void:
 	element_container = get_node(element_container)
+	popped_container = get_node(popped_container)
 	#TODO: get this from save file
 	number_of_tasks = 5
 	task_number_label.text = String(number_of_tasks)
@@ -23,21 +28,27 @@ func _create_new_element(title:String, origin:Node) -> Node:
 	pool.add_child(temp_element)
 	temp_element.initialize(title, origin)
 	temp_element.connect("destroy", self, "_on_daily_delete", [temp_element])
+	temp_element.connect("pop", self, "_on_daily_pop", [temp_element])
 	return temp_element
 
 func _on_NewDay_pressed():
+	var force_count = 0
 	for i in pool.get_children():
 		_on_daily_delete(i)
 	for i in element_container.get_children():
 		if i.get_force():
+			force_count += 1
 			if !i.get_used():
 				i.link_daily_node(_create_new_element(i.get_title(), i))
 				i.set_used(true)
+				i.daily_node.set_force(true)
 	for i in range(0, number_of_tasks):
 		var chosen = element_container.get_child(select_index())
 		if !chosen.get_used():
+			force_count += 1
 			chosen.link_daily_node(_create_new_element(chosen.get_title(), chosen))
 			chosen.set_used(true)
+	emit_signal("day_set", force_count)
 
 func select_index() -> int:
 	var weight_array = []
@@ -66,6 +77,18 @@ func _on_daily_delete(element) -> void:
 	node_x.daily_node = null
 	node_x.set_used(false)
 	element.queue_free()
+
+func _on_daily_pop(element) -> void:
+	#instance element in poppedtasks, delete from here
+	if element.get_popped():
+		pool.remove_child(element)
+		popped_container.add_child(element)
+	else:
+		popped_container.remove_child(element)
+		pool.add_child(element)
+		if element.get_force():
+			pool.move_child(element, 0)
+	emit_signal("switch")
 
 func _on_TaskNumber_value_changed(value):
 	number_of_tasks = value

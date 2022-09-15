@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://Element.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://DailyTaskContainer.gd" type="Script" id=5]
 [ext_resource path="res://DailyElement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ElementDetails.tres" type="Theme" id=7]
+[ext_resource path="res://PoppedTaskContainer.gd" type="Script" id=8]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -60,6 +61,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
 element_container = NodePath("../ElementContainer/Pool/VBoxContainer")
+popped_container = NodePath("../PoppedTaskContainer/PoppedTasks/VBoxContainer")
 daily_element = ExtResource( 6 )
 
 [node name="NewDay" type="Button" parent="HBoxContainer/DailyTaskContainer"]
@@ -113,25 +115,36 @@ margin_right = 1023.0
 margin_bottom = 768.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 8 )
 
-[node name="Button" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
+[node name="Count" type="Label" parent="HBoxContainer/PoppedTaskContainer"]
 margin_right = 338.0
-margin_bottom = 95.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
 theme = ExtResource( 1 )
-text = "Finish Day"
+text = "Complete: 0/0"
+align = 1
+valign = 1
 
 [node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer/PoppedTaskContainer"]
-margin_top = 99.0
+margin_top = 73.0
 margin_right = 338.0
-margin_bottom = 768.0
+margin_bottom = 669.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTaskContainer/PoppedTasks"]
 margin_right = 338.0
-margin_bottom = 669.0
+margin_bottom = 596.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
+margin_top = 673.0
+margin_right = 338.0
+margin_bottom = 768.0
+theme = ExtResource( 1 )
+text = "Finish Day"
 
 [node name="Calendar" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 1027.0
@@ -188,5 +201,7 @@ text = "Work on Game"
 [connection signal="forced" from="HBoxContainer/ElementContainer" to="HBoxContainer/DailyTaskContainer" method="_on_ElementContainer_forced"]
 [connection signal="pressed" from="HBoxContainer/ElementContainer/NewElement" to="HBoxContainer/ElementContainer" method="_on_NewElement_pressed"]
 [connection signal="text_entered" from="HBoxContainer/ElementContainer/NewInput" to="HBoxContainer/ElementContainer" method="_on_NewInput_text_entered"]
+[connection signal="day_set" from="HBoxContainer/DailyTaskContainer" to="HBoxContainer/PoppedTaskContainer" method="_on_DailyTaskContainer_day_set"]
+[connection signal="switch" from="HBoxContainer/DailyTaskContainer" to="HBoxContainer/PoppedTaskContainer" method="_on_DailyTaskContainer_switch"]
 [connection signal="pressed" from="HBoxContainer/DailyTaskContainer/NewDay" to="HBoxContainer/DailyTaskContainer" method="_on_NewDay_pressed"]
 [connection signal="value_changed" from="HBoxContainer/DailyTaskContainer/HBoxContainer/TaskNumber" to="HBoxContainer/DailyTaskContainer" method="_on_TaskNumber_value_changed"]
