@@ -26,6 +26,11 @@ func _create_new_element(title:String, origin:Node) -> Node:
 	return temp_element
 
 func _on_NewDay_pressed():
+	for i in element_container.get_children():
+		if i.get_force():
+			if !i.get_used():
+				i.link_daily_node(_create_new_element(i.get_title(), i))
+				i.set_used(true)
 	for i in range(0, number_of_tasks):
 		var chosen = element_container.get_child(select_index())
 		if !chosen.get_used():
@@ -65,10 +70,11 @@ func _on_TaskNumber_value_changed(value):
 	task_number_label.text = String(value)
 
 func _on_ElementContainer_forced(node):
-	if node.get_force():
-		if node.get_used():
-			node.set_used(false)
-		else:
-			node.link_daily_node(_create_new_element(node.get_title(), node))
-	else:
-		_on_daily_delete(node.daily_node)
+#	if node.get_force():
+#		if node.get_used():
+#			node.set_used(false)
+#		else:
+#			node.link_daily_node(_create_new_element(node.get_title(), node))
+#	else:
+#		_on_daily_delete(node.daily_node)
+	pass
