@@ -12,6 +12,9 @@ var calendar_list: Resource = SaveCalendar.new()
 
 var _file := File.new()
 
+func _ready() -> void:
+	load_state()
+
 func populate() -> void:
 	for i in element_container.pool.get_children():
 		element_list.add_element(i)
@@ -27,7 +30,8 @@ func save_state() -> void:
 	populate()
 	var data := {
 		"elements": element_list.elements,
-		"calendar": calendar_list.days_list
+		"calendar": calendar_list.days_list,
+		"tasks": daily_container.number_of_tasks
 	}
 	
 	var json_string = JSON.print(data)
@@ -42,8 +46,11 @@ func load_state() -> void:
 	
 	var content := _file.get_as_text()
 	_file.close()
-	
-	var data: Dictionary = JSON.parse(content).result
+	var parse_data = JSON.parse(content)
+	if parse_data.error != OK:
+		printerr("Gross data in %s. Error code %s" % [SAVE_PATH, error])
+		return
+	var data : Dictionary = parse_data.result
 	var element_keys = data.elements.keys()
 	var daily_count = 0
 	for i in range(0, element_keys.size()):
@@ -55,6 +62,11 @@ func load_state() -> void:
 		calendar_container.add_day(i)
 	popped_container.set_max_count(daily_count)
 	popped_container.update_count()
+	if data.has("tasks"):
+		daily_container.set_task_number(data.tasks)
+	else:
+		daily_container.set_task_number(5)
 
-func _on_Save_pressed():
-	load_state()
+func _notification(what: int) -> void:
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST || what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+		save_state()

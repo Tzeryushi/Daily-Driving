@@ -8,6 +8,10 @@ export var new_element : PackedScene
 
 signal forced(node)
 
+func clear_elements() -> void:
+	for i in pool.get_children():
+		_on_element_delete(i)
+
 func add_element(new_title:String, new_priority:float, is_forced:bool, has_daily:bool) -> Element:
 	var temp_element = new_element.instance()
 	pool.add_child(temp_element)

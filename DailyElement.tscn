@@ -36,6 +36,7 @@ theme = ExtResource( 1 )
 text = "Example"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DailyElementBox"]
 margin_top = 73.0

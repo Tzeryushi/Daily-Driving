@@ -21,6 +21,11 @@ func add_day(percent:float=0.0) -> void:
 #	else:
 #		new_day.color = complete_color
 
+func clear_days() -> void:
+	for i in pool.get_children():
+		pool.remove_child(i)
+		i.queue_free()
+
 func readout() -> String:
 	var output = ""
 	for i in pool.get_children():
@@ -29,3 +34,7 @@ func readout() -> String:
 
 func _on_PoppedTaskContainer_end_day(percentage):
 	add_day(percentage)
+
+func _input(event) -> void:
+	if event.is_action_pressed("reset_days"):
+		clear_days()

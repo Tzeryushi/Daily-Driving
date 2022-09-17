@@ -13,19 +13,27 @@ var number_of_tasks
 
 signal day_set(number)
 signal switch
+signal clear_out
 
 func _ready() -> void:
 	element_container = get_node(element_container)
 	popped_container = get_node(popped_container)
 	#TODO: get this from save file
-	number_of_tasks = 5
+#get list of nodes within the pool, select amount based on priority
+
+func set_task_number(number:int) -> void:
+	number_of_tasks = number
 	task_number_label.text = String(number_of_tasks)
 	task_number_slider.value = number_of_tasks
-#get list of nodes within the pool, select amount based on priority
+
+func clear_elements() -> void:
+	for i in pool.get_children():
+		_on_daily_delete(i)
 
 func add_element(origin:Element, is_popped:bool) -> void:
 	var new_element = _create_new_element(origin.get_title(), origin)
 	origin.link_daily_node(new_element)
+	new_element.set_force(origin.get_force())
 	if is_popped:
 		new_element.pop()
 	
@@ -39,8 +47,10 @@ func _create_new_element(title:String, origin:Node) -> Node:
 
 func _on_NewDay_pressed():
 	var force_count = 0
-	for i in pool.get_children():
-		_on_daily_delete(i)
+	clear_elements()
+	emit_signal("clear_out")
+	if element_container.get_child_count() == 0:
+		return
 	for i in element_container.get_children():
 		if i.get_force():
 			force_count += 1

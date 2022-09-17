@@ -3,6 +3,7 @@ extends Control
 
 onready var element_title := $ElementBox/Title
 onready var priority_text := $ElementBox/HBoxContainer/Priority
+onready var priority_slider := $ElementBox/HBoxContainer/PriorityInput
 onready var bg := $Background
 
 export var default_color : Color = Color(1,1,1,1)
@@ -62,6 +63,7 @@ func _on_Delete_pressed():
 func set_priority(value:float) -> void:
 	priority = value
 	priority_text.text = String(value)
+	priority_slider.value = value
 
 func _on_PriorityInput_value_changed(value):
 	priority = float(value)

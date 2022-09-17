@@ -133,28 +133,22 @@ valign = 1
 [node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer/PoppedTaskContainer"]
 margin_top = 73.0
 margin_right = 338.0
-margin_bottom = 645.0
+margin_bottom = 669.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTaskContainer/PoppedTasks"]
 margin_right = 338.0
-margin_bottom = 572.0
+margin_bottom = 596.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EndDay" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
-margin_top = 649.0
-margin_right = 338.0
-margin_bottom = 744.0
-theme = ExtResource( 1 )
-text = "Finish Day"
-
-[node name="Save" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
-margin_top = 748.0
+margin_top = 673.0
 margin_right = 338.0
 margin_bottom = 768.0
-text = "Save"
+theme = ExtResource( 1 )
+text = "Finish Day"
 
 [node name="Calendar" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 1027.0
@@ -178,10 +172,10 @@ columns = 7
 [connection signal="forced" from="HBoxContainer/ElementContainer" to="HBoxContainer/DailyTaskContainer" method="_on_ElementContainer_forced"]
 [connection signal="pressed" from="HBoxContainer/ElementContainer/NewElement" to="HBoxContainer/ElementContainer" method="_on_NewElement_pressed"]
 [connection signal="text_entered" from="HBoxContainer/ElementContainer/NewInput" to="HBoxContainer/ElementContainer" method="_on_NewInput_text_entered"]
+[connection signal="clear_out" from="HBoxContainer/DailyTaskContainer" to="HBoxContainer/PoppedTaskContainer" method="_on_DailyTaskContainer_clear_out"]
 [connection signal="day_set" from="HBoxContainer/DailyTaskContainer" to="HBoxContainer/PoppedTaskContainer" method="_on_DailyTaskContainer_day_set"]
 [connection signal="switch" from="HBoxContainer/DailyTaskContainer" to="HBoxContainer/PoppedTaskContainer" method="_on_DailyTaskContainer_switch"]
 [connection signal="pressed" from="HBoxContainer/DailyTaskContainer/NewDay" to="HBoxContainer/DailyTaskContainer" method="_on_NewDay_pressed"]
 [connection signal="value_changed" from="HBoxContainer/DailyTaskContainer/HBoxContainer/TaskNumber" to="HBoxContainer/DailyTaskContainer" method="_on_TaskNumber_value_changed"]
 [connection signal="end_day" from="HBoxContainer/PoppedTaskContainer" to="HBoxContainer/Calendar" method="_on_PoppedTaskContainer_end_day"]
 [connection signal="pressed" from="HBoxContainer/PoppedTaskContainer/EndDay" to="HBoxContainer/PoppedTaskContainer" method="_on_EndDay_pressed"]
-[connection signal="pressed" from="HBoxContainer/PoppedTaskContainer/Save" to="." method="_on_Save_pressed"]
