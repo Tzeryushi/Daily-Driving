@@ -46,22 +46,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Kill" type="Button" parent="DailyElementBox/HBoxContainer"]
-margin_right = 89.0
+margin_right = 135.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 theme = ExtResource( 3 )
 text = "Kill"
 
-[node name="Fail" type="Button" parent="DailyElementBox/HBoxContainer"]
-margin_left = 93.0
-margin_right = 182.0
-margin_bottom = 31.0
-size_flags_horizontal = 3
-theme = ExtResource( 3 )
-text = "Fail"
-
 [node name="Pop" type="Button" parent="DailyElementBox/HBoxContainer"]
-margin_left = 186.0
+margin_left = 139.0
 margin_right = 275.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
