@@ -1,3 +1,4 @@
+class_name CalendarContainer
 extends ScrollContainer
 
 onready var pool = $CompleteContainer
@@ -20,7 +21,11 @@ func add_day(percent:float=0.0) -> void:
 #	else:
 #		new_day.color = complete_color
 
-
+func readout() -> String:
+	var output = ""
+	for i in pool.get_children():
+		output += output
+	return output
 
 func _on_PoppedTaskContainer_end_day(percentage):
 	add_day(percentage)

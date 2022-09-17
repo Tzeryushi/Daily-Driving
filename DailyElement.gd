@@ -1,3 +1,4 @@
+class_name DailyElement
 extends Control
 
 onready var element_title = $DailyElementBox/Title

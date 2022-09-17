@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ElementScor.tres" type="Theme" id=1]
 [ext_resource path="res://Element.tscn" type="PackedScene" id=2]
@@ -10,10 +10,12 @@
 [ext_resource path="res://PoppedTaskContainer.gd" type="Script" id=8]
 [ext_resource path="res://CalendarSegment.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Calendar.gd" type="Script" id=10]
+[ext_resource path="res://Main.gd" type="Script" id=11]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 11 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -131,22 +133,28 @@ valign = 1
 [node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer/PoppedTaskContainer"]
 margin_top = 73.0
 margin_right = 338.0
-margin_bottom = 669.0
+margin_bottom = 645.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTaskContainer/PoppedTasks"]
 margin_right = 338.0
-margin_bottom = 596.0
+margin_bottom = 572.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EndDay" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
-margin_top = 673.0
+margin_top = 649.0
 margin_right = 338.0
-margin_bottom = 768.0
+margin_bottom = 744.0
 theme = ExtResource( 1 )
 text = "Finish Day"
+
+[node name="Save" type="Button" parent="HBoxContainer/PoppedTaskContainer"]
+margin_top = 748.0
+margin_right = 338.0
+margin_bottom = 768.0
+text = "Save"
 
 [node name="Calendar" type="ScrollContainer" parent="HBoxContainer"]
 margin_left = 1027.0
@@ -176,3 +184,4 @@ columns = 7
 [connection signal="value_changed" from="HBoxContainer/DailyTaskContainer/HBoxContainer/TaskNumber" to="HBoxContainer/DailyTaskContainer" method="_on_TaskNumber_value_changed"]
 [connection signal="end_day" from="HBoxContainer/PoppedTaskContainer" to="HBoxContainer/Calendar" method="_on_PoppedTaskContainer_end_day"]
 [connection signal="pressed" from="HBoxContainer/PoppedTaskContainer/EndDay" to="HBoxContainer/PoppedTaskContainer" method="_on_EndDay_pressed"]
+[connection signal="pressed" from="HBoxContainer/PoppedTaskContainer/Save" to="." method="_on_Save_pressed"]

@@ -1,3 +1,4 @@
+class_name ElementContainer
 extends VBoxContainer
 
 onready var input_field = $NewInput

@@ -1,3 +1,4 @@
+class_name Element
 extends Control
 
 onready var element_title = $ElementBox/Title
@@ -8,7 +9,7 @@ export var default_color : Color = Color(1,1,1,1)
 export var force_color : Color = Color(1,1,1,1)
 export var used_color : Color = Color(1,1,1,1)
 
-var daily_node = null
+var daily_node : DailyElement = null
 
 var priority : float = 1.0
 var force : bool = false

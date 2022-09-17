@@ -8,6 +8,52 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "ScrollContainer",
+"class": "CalendarContainer",
+"language": "GDScript",
+"path": "res://Calendar.gd"
+}, {
+"base": "ColorRect",
+"class": "CalendarSegment",
+"language": "GDScript",
+"path": "res://CalendarSegment.gd"
+}, {
+"base": "Control",
+"class": "DailyElement",
+"language": "GDScript",
+"path": "res://DailyElement.gd"
+}, {
+"base": "Control",
+"class": "Element",
+"language": "GDScript",
+"path": "res://Element.gd"
+}, {
+"base": "VBoxContainer",
+"class": "ElementContainer",
+"language": "GDScript",
+"path": "res://ElementContainer.gd"
+}, {
+"base": "Resource",
+"class": "SaveCalendar",
+"language": "GDScript",
+"path": "res://CalendarResource.gd"
+}, {
+"base": "Resource",
+"class": "SaveElement",
+"language": "GDScript",
+"path": "res://ElementResource.gd"
+} ]
+_global_script_class_icons={
+"CalendarContainer": "",
+"CalendarSegment": "",
+"DailyElement": "",
+"Element": "",
+"ElementContainer": "",
+"SaveCalendar": "",
+"SaveElement": ""
+}
+
 [application]
 
 config/name="Daily Driving"
