@@ -8,6 +8,17 @@ export var new_element : PackedScene
 
 signal forced(node)
 
+func add_element(new_title:String, new_priority:float, is_forced:bool, has_daily:bool) -> Element:
+	var temp_element = new_element.instance()
+	pool.add_child(temp_element)
+	temp_element.set_title(new_title)
+	temp_element.connect("destroy", self, "_on_element_delete", [temp_element])
+	temp_element.connect("forced", self, "_on_element_forced", [temp_element])
+	temp_element.set_force(is_forced)
+	temp_element.set_used(has_daily)
+	temp_element.set_priority(new_priority)
+	return temp_element
+
 func _create_new_element(title:String) -> void:
 	var temp_element = new_element.instance()
 	pool.add_child(temp_element)

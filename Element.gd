@@ -59,6 +59,10 @@ func link_daily_node(node) -> void:
 func _on_Delete_pressed():
 	destroy() # Replace with function body.
 
+func set_priority(value:float) -> void:
+	priority = value
+	priority_text = value
+
 func _on_PriorityInput_value_changed(value):
 	priority = float(value)
 	priority_text.text = String(value)

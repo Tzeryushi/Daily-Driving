@@ -23,6 +23,12 @@ func _ready() -> void:
 	task_number_slider.value = number_of_tasks
 #get list of nodes within the pool, select amount based on priority
 
+func add_element(origin:Element, is_popped:bool) -> void:
+	var new_element = _create_new_element(origin.get_title(), origin)
+	origin.link_daily_node(new_element)
+	if is_popped:
+		new_element.pop()
+	
 func _create_new_element(title:String, origin:Node) -> Node:
 	var temp_element = daily_element.instance()
 	pool.add_child(temp_element)
