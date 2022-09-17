@@ -1,6 +1,6 @@
 extends Control
 
-const SAVE_PATH := "res://save.json"
+const SAVE_PATH := "user://save.json"
 
 onready var element_container := $HBoxContainer/ElementContainer
 onready var daily_container := $HBoxContainer/DailyTaskContainer
@@ -63,7 +63,10 @@ func load_state() -> void:
 	popped_container.set_max_count(daily_count)
 	popped_container.update_count()
 	if data.has("tasks"):
-		daily_container.set_task_number(data.tasks)
+		if data.tasks != null:
+			daily_container.set_task_number(data.tasks)
+		else:
+			daily_container.set_task_number(5)
 	else:
 		daily_container.set_task_number(5)
 

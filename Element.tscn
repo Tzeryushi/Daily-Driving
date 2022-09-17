@@ -66,6 +66,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme = ExtResource( 2 )
 max_value = 20.0
+scrollable = false
 
 [node name="Force" type="Button" parent="ElementBox/HBoxContainer"]
 margin_left = 144.0
