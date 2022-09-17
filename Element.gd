@@ -1,9 +1,9 @@
 class_name Element
 extends Control
 
-onready var element_title = $ElementBox/Title
-onready var priority_text = $ElementBox/HBoxContainer/Priority
-onready var bg = $Background
+onready var element_title := $ElementBox/Title
+onready var priority_text := $ElementBox/HBoxContainer/Priority
+onready var bg := $Background
 
 export var default_color : Color = Color(1,1,1,1)
 export var force_color : Color = Color(1,1,1,1)
@@ -61,7 +61,7 @@ func _on_Delete_pressed():
 
 func set_priority(value:float) -> void:
 	priority = value
-	priority_text = value
+	priority_text.text = String(value)
 
 func _on_PriorityInput_value_changed(value):
 	priority = float(value)
