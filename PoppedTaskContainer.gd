@@ -13,6 +13,9 @@ func update_count() -> void:
 func _on_DailyTaskContainer_switch():
 	update_count()
 
+func set_max_count(number) -> void:
+	max_count = number
+
 func _on_DailyTaskContainer_day_set(number):
 	max_count = number
 	update_count()

@@ -2,9 +2,10 @@ extends Control
 
 const SAVE_PATH := "res://save.json"
 
-onready var element_container = $HBoxContainer/ElementContainer
-onready var daily_container = $HBoxContainer/DailyTaskContainer
-onready var calendar_container = $HBoxContainer/Calendar
+onready var element_container := $HBoxContainer/ElementContainer
+onready var daily_container := $HBoxContainer/DailyTaskContainer
+onready var popped_container := $HBoxContainer/PoppedTaskContainer
+onready var calendar_container := $HBoxContainer/Calendar
 
 var element_list: Resource = SaveElement.new()
 var calendar_list: Resource = SaveCalendar.new()
@@ -44,13 +45,16 @@ func load_state() -> void:
 	
 	var data: Dictionary = JSON.parse(content).result
 	var element_keys = data.elements.keys()
-	var count = 0
+	var daily_count = 0
 	for i in range(0, element_keys.size()):
 		var temp_element = element_container.add_element(element_keys[i], data.elements[element_keys[i]]["priority"], data.elements[element_keys[i]]["force"], data.elements[element_keys[i]]["daily"])
 		if data.elements[element_keys[i]]["daily"]:
+			daily_count += 1
 			daily_container.add_element(temp_element, data.elements[element_keys[i]]["popped"])
 	for i in data.calendar:
 		calendar_container.add_day(i)
+	popped_container.set_max_count(daily_count)
+	popped_container.update_count()
 
 func _on_Save_pressed():
 	load_state()
