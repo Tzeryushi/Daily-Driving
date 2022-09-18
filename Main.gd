@@ -55,7 +55,7 @@ func load_state() -> void:
 	var daily_count = 0
 	for i in range(0, element_keys.size()):
 		var temp_element = element_container.add_element(element_keys[i], data.elements[element_keys[i]]["priority"], data.elements[element_keys[i]]["force"], data.elements[element_keys[i]]["daily"])
-		if data.elements[element_keys[i]]["daily"]:
+		if data.elements[element_keys[i]]["daily"] and temp_element != null:
 			daily_count += 1
 			daily_container.add_element(temp_element, data.elements[element_keys[i]]["popped"])
 	for i in data.calendar:
