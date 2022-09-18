@@ -60,10 +60,14 @@ func _on_NewDay_pressed():
 				i.daily_node.set_force(true)
 	for i in range(0, number_of_tasks):
 		var chosen = element_container.get_child(select_index())
+		chosen.reset_added_priority()
 		if !chosen.get_used():
 			force_count += 1
 			chosen.link_daily_node(_create_new_element(chosen.get_title(), chosen))
 			chosen.set_used(true)
+	for i in element_container.get_children():
+		if !i.get_used() and i.priority != 0.0:
+			i.add_priority(1.0)
 	emit_signal("day_set", force_count)
 
 func select_index() -> int:
@@ -71,10 +75,10 @@ func select_index() -> int:
 	var full_weight = 0.0
 	#add exclusions to avoid duplicates
 	for i in element_container.get_children():
-		if i.get_used() or i.get_force():
+		if i.get_used() or i.get_force() or i.priority == 0.0:
 			weight_array.append(0.0)
 		else:
-			weight_array.append(i.priority)
+			weight_array.append(i.get_full_priority())
 	var prefix_array = []
 	prefix_array.append(weight_array[0])
 	for index in range(1,weight_array.size()):

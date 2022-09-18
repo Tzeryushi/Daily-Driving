@@ -123,7 +123,7 @@ script = ExtResource( 8 )
 
 [node name="Count" type="Label" parent="HBoxContainer/PoppedTaskContainer"]
 margin_right = 338.0
-margin_bottom = 69.0
+margin_bottom = 59.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "Complete: 0/0"
@@ -131,7 +131,7 @@ align = 1
 valign = 1
 
 [node name="PoppedTasks" type="ScrollContainer" parent="HBoxContainer/PoppedTaskContainer"]
-margin_top = 73.0
+margin_top = 63.0
 margin_right = 338.0
 margin_bottom = 669.0
 size_flags_horizontal = 3
@@ -139,7 +139,7 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PoppedTaskContainer/PoppedTasks"]
 margin_right = 338.0
-margin_bottom = 596.0
+margin_bottom = 606.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 

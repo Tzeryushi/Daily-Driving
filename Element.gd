@@ -3,6 +3,7 @@ extends Control
 
 onready var element_title := $ElementBox/Title
 onready var priority_text := $ElementBox/HBoxContainer/Priority
+onready var added_priority_text := $ElementBox/HBoxContainer/PriorityAdd
 onready var priority_slider := $ElementBox/HBoxContainer/PriorityInput
 onready var bg := $Background
 
@@ -13,6 +14,7 @@ export var used_color : Color = Color(1,1,1,1)
 var daily_node : DailyElement = null
 
 var priority : float = 1.0
+var added_priority : float = 0.0
 var force : bool = false
 var used : bool = false
 
@@ -65,9 +67,20 @@ func set_priority(value:float) -> void:
 	priority_text.text = String(value)
 	priority_slider.value = value
 
+func add_priority(value:float) -> void:
+	added_priority += value
+	added_priority_text.text = "+"+String(added_priority)
+
+func reset_added_priority() -> void:
+	added_priority = 0.0
+	added_priority_text.text = "+"+String(added_priority)
+
 func _on_PriorityInput_value_changed(value):
 	priority = float(value)
 	priority_text.text = String(value)
+
+func get_full_priority() -> float:
+	return priority + added_priority
 
 func _on_Force_pressed():
 	set_force(!force)
